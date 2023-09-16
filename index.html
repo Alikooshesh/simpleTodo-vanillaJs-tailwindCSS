@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="w-full p-[16px]">
+        <div class="w-full max-w-[450px] pb-[16px] mx-auto flex items-center gap-[8px] border-b">
+            <input id="text-input" class="w-full p-[4px] border border-gray-400 rounded-[8px]" placeholder="todo text">
+            <button class="p-[4px] border border-gray-400 rounded-[8px]" onclick="addBtnClickHandler()">ADD</button>
+        </div>
+
+        <div id="todoList-box" class="w-full max-w-[450px] mt-[16px] mx-auto flex flex-col items-center gap-[16px]">
+            
+            
+        </div>
+    </div>
+
+    <div id="modal-wrapper" class="hidden w-[100vw] h-[100vh] fixed top-0 left-0 bg-white bg-opacity-[80%] items-center justify-center">
+        
+        <div class="w-full max-w-[300px] bg-green-400 rounded-[8px]">
+            test modal text
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
