@@ -22,8 +22,10 @@
 
     <div id="modal-wrapper" class="hidden w-[100vw] h-[100vh] fixed top-0 left-0 bg-white bg-opacity-[80%] items-center justify-center">
         
-        <div class="w-full max-w-[300px] bg-green-400 rounded-[8px]">
-            test modal text
+        <div class="w-full max-w-[300px] p-[16px] bg-green-400 rounded-[8px] flex items-center gap-[8px]">
+            <input id="edit-text-input" class="w-full p-[4px] border border-gray-400 rounded-[8px]" placeholder="todo text">
+            <button class="p-[4px] border border-gray-400 rounded-[8px] bg-gray-100" onclick="submitEditClickHandler()">Submit</button>
+            <button class="p-[4px] border border-gray-400 rounded-[8px] bg-red-300" onclick="cancelEditClickHandler()">cancel</button>
         </div>
     </div>
 

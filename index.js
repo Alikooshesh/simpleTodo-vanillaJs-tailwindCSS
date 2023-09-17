@@ -1,6 +1,7 @@
 const textInput = document.querySelectorAll("#text-input")
 const todoListBox = document.querySelector("#todoList-box")
 const modalWrapper = document.getElementById("modal-wrapper")
+const editTextInput = document.getElementById("edit-text-input")
 
 let data=[]
 
@@ -45,6 +46,10 @@ const changeToEditMode = (todoId)=>{
     })
 }
 
+const changeAllTodoToDefaultMode = ()=>{
+    data = data.map(item => ({id : item.id , text : item.text , isEditMode : false}))
+}
+
 // dom
 
 const todoBoxCreator = ()=>{
@@ -78,14 +83,18 @@ const todoBoxCreator = ()=>{
 const modalController = ()=>{
     const finder = data.find(item => item.isEditMode == true)
 
+    console.log("modal controller")
+ 
     if(finder){
         modalWrapper.style.display = "flex"
+    }else{
+        modalWrapper.style.display = "none"
     }
 }
 
 const addBtnClickHandler = ()=>{
     addNewTodo(textInput[0].value)
-    console.log(data)
+    textInput[0].value = ""
 
     todoBoxCreator()
 }
@@ -97,8 +106,27 @@ const removeBtnClickHandler = (todoId)=>{
 
 const editBtnClickHandler = (todoId)=>{
     changeToEditMode(todoId)
-    console.log(data)
     modalController()
+
+    editTextInput.value = data.find(item => item.id == todoId).text
+}
+
+const cancelEditClickHandler = ()=>{
+    changeAllTodoToDefaultMode()
+    modalController()
+}
+
+const submitEditClickHandler = ()=>{
+    const finder = data.find(item=> item.isEditMode)
+
+    console.log(finder)
+
+    if(finder){
+        editTodo(finder.id , editTextInput.value)
+        changeAllTodoToDefaultMode()
+        modalController()
+        todoBoxCreator()
+    }
 }
 
 todoBoxCreator()
